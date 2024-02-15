@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+</head>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+
+    select {
+        width: 35%;
+        height: 25px;
+    }
+
+    button{
+        color: white;
+        background-color: red;
+        border-color: red;
+        border-radius: 5px;
+        width: 35%;
+        height: 25px;
+        
+    }
+</style>
+
+
+<body>
+<h1>RESTful API task:</h1>
+<p>Develop a solution to identify unauthorized sales transactions from provided datasets of product listings and actual sales records.
+</p>
+<h1>RESTful API Overview:</h1>
+<p>
+    <span>
+        TASK OVERVIEW:
+    </span>
+    The task is to develop a REST API endpoint that processes POST requests containing two lists: one containing product listing (including product ID and authorized seller ID) and the other actual sales transactions (including product ID and seller ID). Your task is to develop an algorithm that identifies any sales transactions made by unauthorized seller.</p>
+
+    <h2>Solution:</h2>
+    <p>For solution Flask is used as framework to build endpoint which will carry JSON data.</p>
+
+    <p>On real server application data would be stored in some kind of dataabase (MS SQL, MySql, Sqlite...). In this case for demonstration purposese and simplicity data will be stored inside file "data.json". On same data check will be performed to validate if seller is authorized to sell data using seller id on on products. Result will be sent to new route (API endpoint) as JSON. In next two tables is listing of data in "data.json file".
+    </p>
+    <h3>Products:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product id </th>
+                <th>Product Name </th>
+                <th>Seller id</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for item in result["products"] %}
+            <tr>
+                <td>{{item["id"]}}</td>
+                <td>{{item["Name"]}}</td>
+                <td>{{item["seller_id"]}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <h3>Sellers:</h3>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Seller id</th>
+                <th>Seller name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in result["sellers"] %}
+            <tr>
+                <td>{{item["id"]}}</td>
+                <td>{{item["Name"]}}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<hr>
+<h2>Test:</h3>
+<hr>
+<ul>
+    <li>Two lists represents items an sellers.</li>
+    <li>Books about animals cannot be sold by car sellers, and books about cars cannot be sold by animal seller.</li>
+    <li>Previous description if selected will yield unauthorized sale.</li>
+    <li>After clicking "Check" browser will show JSON respons on endpoint /validate</li>
+</ul>
+
+<hr>
+<h4>Pick from listst and check transaction by pressing the button:</h4>
+
+    <form action="{{url_for('validate')}}", method="POST">
+    <select name="product">
+        {% for item in result["products"] %}
+        <option value={{ item["id"] }}>{{ item["Name"] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <select name="seller">
+        {% for item in result["sellers"] %}
+        <option value={{ item["id"] }}>{{ item["Name"] }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit">Check</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+{
+    "products":[
+        {
+            "id":"1",
+            "Name": "Book about animals 1",
+            "seller_id":"1"
+        },
+        {
+            "id":"2",
+            "Name": "Book about animals 2",
+            "seller_id":"1"
+        },
+        {
+            "id":"3",
+            "Name": "Book about animals 3",
+            "seller_id":"1"
+        },{
+            "id":"4",
+            "Name": "Book about cars 1",
+            "seller_id":"2"
+        },
+        {
+            "id":"5",
+            "Name": "Book about cars 2",
+            "seller_id":"2"
+        },
+        {
+            "id":"6",
+            "Name": "Book about cars 3",
+            "seller_id":"2"
+        }
+    ],
+    "sellers" : [
+        {
+            "id":"1",
+            "Name":"Book Seller - animals"
+        },
+        {
+            "id":"2",
+            "Name":"Book Seller - cars"
+        }
+    ]
+
+}
