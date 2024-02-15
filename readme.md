@@ -23,7 +23,13 @@
     ```
     pip install Flask
     ```
-9. Open Visual studio code and open folder created under step 2.
+
+8.1. Run from terminal by typing:
+    ```
+    flask --app main run
+    ```
+
+9. Or: Open Visual studio code and open folder created under step 2.
 
 10. Inside VS Code open main.py.
 
