@@ -1,4 +1,4 @@
-How to run demo:
+# How to run demo:
 
 1. Download as zip file
 
@@ -29,7 +29,7 @@ How to run demo:
 
 11. Run 'Start debugging' with F5.
 
-12. In web browser enter: http://127.0.0.1:5000 and Enter.
+12. In web browser visit: http://127.0.0.1:5000. Or just use this link.
 
 13. Follow instructions
 
